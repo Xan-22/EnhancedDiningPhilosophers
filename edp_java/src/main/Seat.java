@@ -47,7 +47,6 @@ public class Seat {
     }
 
     public synchronized void vacate() {
-        System.out.println(String.format("Seat %d is vacated.", number));
         occupied = false;
     }
 }

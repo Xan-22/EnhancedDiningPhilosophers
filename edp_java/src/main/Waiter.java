@@ -119,9 +119,7 @@ public class Waiter extends Thread {
                             name, currentPatron.name()));
             currentPatron.setShouldReceiveCoupon(true);
             currentPatron.notifyFoodServed(); // Countdown the latch to wake up the philosopher
-            // Clear the philosopher's order so they can try again
             currentPatron.clearOrder();
-            // Vacate the seat and print message
             currentPatron.vacateSeat();
             System.out.println(String.format("Philosopher %s has left the restaurant without being served.",
                     currentPatron.name()));
@@ -159,14 +157,6 @@ public class Waiter extends Thread {
             String mealDesc = newOrder.mealString();
             System.out.println(String.format("Waiter %s has taken order for %s from philosopher %s.",
                     name, mealDesc, callingPhilosopher.name()));
-        }
-    }
-
-    // class implementation
-    public void serve(Philosopher philosopher) {
-        if (order.isPresent()) {
-            System.out.println(String.format("Waiter %s is serving philosopher %s %s.", name,
-                    philosopher.name(), order.get().mealString()));
         }
     }
 }

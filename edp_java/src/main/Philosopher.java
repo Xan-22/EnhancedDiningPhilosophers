@@ -10,7 +10,7 @@ public class Philosopher extends Thread {
     private static final long EATING_TIME = 2500;
     private static final long WAITING_TIME = 100;
     private static final long TIMEOUT = 2500;
-    private static final float MONEY = 200.0f; // Initial money
+    private static final float STARTING_MONEY = 200.0f;
     private static final float COUPON_VALUE = 5.0f;
 
     private static final Philosopher[] PHILOSOPHERS = java.util.Arrays.stream(Name.PHILOSOPHER_NAMES)
@@ -28,7 +28,7 @@ public class Philosopher extends Thread {
     }
 
     private final Name name;
-    private float money = MONEY;
+    private float money = STARTING_MONEY;
     private Optional<Seat> seat = Optional.empty();
     private Optional<Order> order = Optional.empty();
     private CountDownLatch foodServedLatch;
@@ -68,14 +68,13 @@ public class Philosopher extends Thread {
         int leftChopstick = seatNumber;
         int rightChopstick = (seatNumber + 1) % PHILOSOPHERS.length;
 
-        // Asymmetric solution: last philosopher picks up chopsticks in reverse order
-        int firstChopstick, secondChopstick;
+        int firstChopstick;
+        int secondChopstick;
+        // Last philosopher picks up right chopstick first, then left
         if (seatNumber == PHILOSOPHERS.length - 1) {
-            // Last philosopher picks up right chopstick first, then left
             firstChopstick = rightChopstick;
             secondChopstick = leftChopstick;
         } else {
-            // All other philosophers pick up left chopstick first, then right
             firstChopstick = leftChopstick;
             secondChopstick = rightChopstick;
         }

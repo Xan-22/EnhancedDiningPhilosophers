@@ -91,8 +91,9 @@ public class EnhancedDiningPhilosophers {
                             .collect(java.util.stream.Collectors.joining(", "))
                     + ")";
 
-            System.out.println(String.format("Restaurant status: %d active philosophers, %s, %s, %d orders on counter",
-                    activePhilosophers, seatInfo, chopstickInfo, Counter.orderCount()));
+            System.out.println(
+                    String.format("%nRestaurant status: %d active philosophers, %s, %s, %d orders on counter%n",
+                            activePhilosophers, seatInfo, chopstickInfo, Counter.orderCount()));
         }
     }
 }
