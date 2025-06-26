@@ -164,4 +164,34 @@ yarn-error.log*
 # Local configuration files
 application-local.properties
 application-local.yml
-application-local.yaml 
+application-local.yaml
+
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Go build and cache directories
+bin/
+pkg/
+vendor/
+
+# Go module files (optional - uncomment if you want to ignore them)
+# go.sum
+
+# Go coverage files
+*.cover
+*.coverprofile
+coverage.out
+coverage.html
+
+# Go debug files
+debug
+
+# Go workspace files
+go.work.sum 
